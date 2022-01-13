@@ -1,0 +1,13 @@
+# INCLUDED:
+glfw -> /lib/glfw (https://github.com/glfw/glfw)
+imgui -> /lib/imgui (https://github.com/ocornut/imgui/)
+
+libstem_gamepad -> /lib/libstem_gamepad (https://github.com/ThemsAllTook/libstem_gamepad)
+serialib -> /lib/serialib (https://github.com/imabot2/serialib)
+
+lua -> /lib/lua (https://github.com/walterschell/Lua)
+sol2 -> /lib/sol2 (https://github.com/ThePhD/sol2)
+
+# EXTERNAL:
+opengl3
+

@@ -1,0 +1,382 @@
+[
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/include -I/home/netman/robotics/ground_control/lib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o CMakeFiles/ground_control.dir/src/gui/gui.cpp.o -c /home/netman/robotics/ground_control/src/gui/gui.cpp",
+  "file": "/home/netman/robotics/ground_control/src/gui/gui.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/include -I/home/netman/robotics/ground_control/lib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o CMakeFiles/ground_control.dir/src/gui/gui_main.cpp.o -c /home/netman/robotics/ground_control/src/gui/gui_main.cpp",
+  "file": "/home/netman/robotics/ground_control/src/gui/gui_main.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/include -I/home/netman/robotics/ground_control/lib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o CMakeFiles/ground_control.dir/src/gui/gui_log.cpp.o -c /home/netman/robotics/ground_control/src/gui/gui_log.cpp",
+  "file": "/home/netman/robotics/ground_control/src/gui/gui_log.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/include -I/home/netman/robotics/ground_control/lib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o CMakeFiles/ground_control.dir/src/gui/gui_scripting.cpp.o -c /home/netman/robotics/ground_control/src/gui/gui_scripting.cpp",
+  "file": "/home/netman/robotics/ground_control/src/gui/gui_scripting.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/include -I/home/netman/robotics/ground_control/lib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o CMakeFiles/ground_control.dir/src/main.cpp.o -c /home/netman/robotics/ground_control/src/main.cpp",
+  "file": "/home/netman/robotics/ground_control/src/main.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -g -o lib/serialib/CMakeFiles/serialib.dir/serialib.cpp.o -c /home/netman/robotics/ground_control/lib/serialib/serialib.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/serialib/serialib.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/context.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/context.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/context.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/init.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/init.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/init.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/input.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/input.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/input.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/monitor.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/monitor.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/monitor.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/platform.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/platform.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/platform.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/vulkan.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/vulkan.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/window.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/window.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/window.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/egl_context.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/egl_context.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/osmesa_context.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/osmesa_context.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/null_init.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/null_init.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/null_init.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/null_monitor.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/null_monitor.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/null_window.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/null_window.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/null_window.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/null_joystick.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/null_joystick.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/posix_module.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/posix_module.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/posix_time.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/posix_time.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/posix_thread.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/posix_thread.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/x11_init.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/x11_init.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/x11_monitor.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/x11_monitor.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/x11_window.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/x11_window.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/xkb_unicode.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/xkb_unicode.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/glx_context.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/glx_context.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -D_DEFAULT_SOURCE -D_GLFW_X11 -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/glfw/src -I/home/netman/robotics/ground_control/build/lib/glfw/src -g -fPIC -Wall -std=c99 -o lib/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o -c /home/netman/robotics/ground_control/lib/glfw/src/linux_joystick.c",
+  "file": "/home/netman/robotics/ground_control/lib/glfw/src/linux_joystick.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/imgui.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/imgui.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/imgui.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/imgui_draw.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/imgui_draw.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/imgui_draw.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/imgui_widgets.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/imgui_widgets.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/imgui_widgets.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/imgui_tables.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/imgui_tables.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/imgui_tables.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/imgui_demo.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/imgui_demo.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/imgui_demo.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/backends/imgui_impl_glfw.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/backends/imgui_impl_glfw.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/backends/imgui_impl_glfw.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/backends/imgui_impl_opengl3.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/backends/imgui_impl_opengl3.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/backends/imgui_impl_opengl3.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -g -o lib/imgui/CMakeFiles/imgui.dir/misc/cpp/imgui_stdlib.cpp.o -c /home/netman/robotics/ground_control/lib/imgui/misc/cpp/imgui_stdlib.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/imgui/misc/cpp/imgui_stdlib.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lapi.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lapi.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lapi.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lcode.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lcode.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lcode.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lctype.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lctype.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lctype.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/ldebug.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldebug.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldebug.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/ldo.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldo.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldo.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/ldump.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldump.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldump.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lfunc.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lfunc.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lfunc.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lgc.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lgc.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lgc.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/llex.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/llex.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/llex.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lmem.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lmem.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lmem.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lobject.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lobject.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lobject.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lopcodes.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lopcodes.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lopcodes.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lparser.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lparser.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lparser.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lstate.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lstate.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lstate.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lstring.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lstring.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lstring.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/ltable.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ltable.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ltable.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/ltm.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ltm.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ltm.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lundump.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lundump.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lundump.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lvm.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lvm.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lvm.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lzio.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lzio.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lzio.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lauxlib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lauxlib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lauxlib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lbaselib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lbaselib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lbaselib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lcorolib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lcorolib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lcorolib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/ldblib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldblib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ldblib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/liolib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/liolib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/liolib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lmathlib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lmathlib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lmathlib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/loadlib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/loadlib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/loadlib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/loslib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/loslib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/loslib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lstrlib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lstrlib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lstrlib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/ltablib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ltablib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/ltablib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/lutf8lib.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lutf8lib.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/lutf8lib.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -Wall -Wextra -o lib/lua/lua-5.4.3/CMakeFiles/lua_static.dir/src/linit.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/linit.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/linit.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/clang-13 -DLUA_USE_POSIX -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -g -o lib/lua/lua-5.4.3/CMakeFiles/luac.dir/src/luac.c.o -c /home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/luac.c",
+  "file": "/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/src/luac.c"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -DSOL_ALL_SAFETIES_ON -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/lua -I/home/netman/robotics/ground_control/lib/gdcl/lib/sol2/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/serialib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o lib/gdcl/CMakeFiles/gdcl.dir/src/gdcl/util.cpp.o -c /home/netman/robotics/ground_control/lib/gdcl/src/gdcl/util.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/gdcl/src/gdcl/util.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -DSOL_ALL_SAFETIES_ON -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/lua -I/home/netman/robotics/ground_control/lib/gdcl/lib/sol2/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/serialib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o lib/gdcl/CMakeFiles/gdcl.dir/src/gdcl/net/net.cpp.o -c /home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -DSOL_ALL_SAFETIES_ON -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/lua -I/home/netman/robotics/ground_control/lib/gdcl/lib/sol2/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/serialib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o lib/gdcl/CMakeFiles/gdcl.dir/src/gdcl/net/net_serial.cpp.o -c /home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net_serial.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net_serial.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -DSOL_ALL_SAFETIES_ON -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/lua -I/home/netman/robotics/ground_control/lib/gdcl/lib/sol2/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/serialib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o lib/gdcl/CMakeFiles/gdcl.dir/src/gdcl/net/net_nrf24l01.cpp.o -c /home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net_nrf24l01.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net_nrf24l01.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -DSOL_ALL_SAFETIES_ON -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/lua -I/home/netman/robotics/ground_control/lib/gdcl/lib/sol2/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/serialib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o lib/gdcl/CMakeFiles/gdcl.dir/src/gdcl/net/net_stream_writer.cpp.o -c /home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net_stream_writer.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/gdcl/src/gdcl/net/net_stream_writer.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -DSOL_ALL_SAFETIES_ON -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/lua -I/home/netman/robotics/ground_control/lib/gdcl/lib/sol2/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/serialib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o lib/gdcl/CMakeFiles/gdcl.dir/src/gdcl/rs/rs.cpp.o -c /home/netman/robotics/ground_control/lib/gdcl/src/gdcl/rs/rs.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/gdcl/src/gdcl/rs/rs.cpp"
+},
+{
+  "directory": "/home/netman/robotics/ground_control/build",
+  "command": "/usr/bin/c++ -DLUA_USE_POSIX -DSOL_ALL_SAFETIES_ON -I/home/netman/robotics/ground_control/lib/serialib -I/home/netman/robotics/ground_control/lib/glfw/include -I/home/netman/robotics/ground_control/lib/imgui -I/home/netman/robotics/ground_control/lib/lua/lua-5.4.3/include -I/home/netman/robotics/ground_control/lib/gdcl/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/lua -I/home/netman/robotics/ground_control/lib/gdcl/lib/sol2/include -I/home/netman/robotics/ground_control/lib/gdcl/lib/serialib -isystem /home/netman/robotics/ground_control/lib/sol2/include -g -o lib/gdcl/CMakeFiles/gdcl.dir/src/gdcl/bot.cpp.o -c /home/netman/robotics/ground_control/lib/gdcl/src/gdcl/bot.cpp",
+  "file": "/home/netman/robotics/ground_control/lib/gdcl/src/gdcl/bot.cpp"
+}
+]

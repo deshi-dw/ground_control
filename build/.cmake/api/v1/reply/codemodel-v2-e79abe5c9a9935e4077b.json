@@ -1,0 +1,577 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						4,
+						5,
+						7,
+						8
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						30
+					]
+				},
+				{
+					"build" : "lib/serialib",
+					"jsonFile" : "directory-lib.serialib-Debug-9121ba99cf2ebda3e85d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "lib/serialib",
+					"targetIndexes" : 
+					[
+						34
+					]
+				},
+				{
+					"build" : "lib/glfw",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-lib.glfw-Debug-70a8ea8819387b23d3e3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "lib/glfw"
+				},
+				{
+					"build" : "lib/glfw/src",
+					"jsonFile" : "directory-lib.glfw.src-Debug-0d36f003c6da3f33a22a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "lib/glfw/src",
+					"targetIndexes" : 
+					[
+						29,
+						35
+					]
+				},
+				{
+					"build" : "lib/imgui",
+					"jsonFile" : "directory-lib.imgui-Debug-104616f7281850c34063.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "lib/imgui",
+					"targetIndexes" : 
+					[
+						31
+					]
+				},
+				{
+					"build" : "lib/lua",
+					"childIndexes" : 
+					[
+						6
+					],
+					"jsonFile" : "directory-lib.lua-Debug-9ddcf880fd1b95edbe13.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "lib/lua"
+				},
+				{
+					"build" : "lib/lua/lua-5.4.3",
+					"jsonFile" : "directory-lib.lua.lua-5.4.3-Debug-1d0049b30a8f9e03ee07.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.1"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 4,
+					"source" : "lib/lua/lua-5.4.3",
+					"targetIndexes" : 
+					[
+						32,
+						33
+					]
+				},
+				{
+					"build" : "lib/sol2",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-lib.sol2-Debug-671123ecac06f3c3271b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "lib/sol2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27
+					]
+				},
+				{
+					"build" : "lib/gdcl",
+					"jsonFile" : "directory-lib.gdcl-Debug-38de1c6b6f9d468c8def.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.11"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "lib/gdcl",
+					"targetIndexes" : 
+					[
+						28
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ground_control",
+					"targetIndexes" : 
+					[
+						30
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "serialib",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						34
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						29,
+						35
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "imgui",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						31
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5,
+						6
+					],
+					"name" : "lua",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						32,
+						33
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "sol2",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "gdcl",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						28
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 7,
+					"id" : "Continuous::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-Continuous-Debug-10d37294cccc79ebcd1e.json",
+					"name" : "Continuous",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousBuild::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousBuild-Debug-be9ee35c9b167183cad5.json",
+					"name" : "ContinuousBuild",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousConfigure::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousConfigure-Debug-3a4eee80108e19c67641.json",
+					"name" : "ContinuousConfigure",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousCoverage::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousCoverage-Debug-7fdaf8f3b134361fc06e.json",
+					"name" : "ContinuousCoverage",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousMemCheck::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousMemCheck-Debug-c63dfcd3aadb2e0c7505.json",
+					"name" : "ContinuousMemCheck",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousStart::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousStart-Debug-6c58f7efc9576adb6b5c.json",
+					"name" : "ContinuousStart",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousSubmit::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousSubmit-Debug-76d38cc107be80b979d5.json",
+					"name" : "ContinuousSubmit",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousTest::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousTest-Debug-8d0e69d79f488453a129.json",
+					"name" : "ContinuousTest",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ContinuousUpdate::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ContinuousUpdate-Debug-cfa683a0f5d40a863d3b.json",
+					"name" : "ContinuousUpdate",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "Experimental::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-Experimental-Debug-b9ffd04d25f82b279b05.json",
+					"name" : "Experimental",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalBuild::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalBuild-Debug-775f59f6e8b2d80c54c7.json",
+					"name" : "ExperimentalBuild",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalConfigure::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalConfigure-Debug-7b9c63a556abab59c804.json",
+					"name" : "ExperimentalConfigure",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalCoverage::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalCoverage-Debug-311a804cd501deb22492.json",
+					"name" : "ExperimentalCoverage",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalMemCheck::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalMemCheck-Debug-67d63353e5307bdca40e.json",
+					"name" : "ExperimentalMemCheck",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalStart::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalStart-Debug-74d93476d6c4de91eff7.json",
+					"name" : "ExperimentalStart",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalSubmit::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalSubmit-Debug-5bd9eac10fe4e070c66b.json",
+					"name" : "ExperimentalSubmit",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalTest::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalTest-Debug-e4890dd86caaf28ef9bb.json",
+					"name" : "ExperimentalTest",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ExperimentalUpdate::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-ExperimentalUpdate-Debug-4b5595d629dea2584077.json",
+					"name" : "ExperimentalUpdate",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "Nightly::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-Nightly-Debug-004191f81e6336a81945.json",
+					"name" : "Nightly",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyBuild::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyBuild-Debug-3bc0c5eb4cfe3d0ab746.json",
+					"name" : "NightlyBuild",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyConfigure::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyConfigure-Debug-0349c9dcf30ba4b07b49.json",
+					"name" : "NightlyConfigure",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyCoverage::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyCoverage-Debug-70524655556273203bc6.json",
+					"name" : "NightlyCoverage",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyMemCheck::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyMemCheck-Debug-0a08ec7cfaf2993fa1b6.json",
+					"name" : "NightlyMemCheck",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyMemoryCheck::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyMemoryCheck-Debug-1dbfa284e196e22ae5a3.json",
+					"name" : "NightlyMemoryCheck",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyStart::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyStart-Debug-d83c0aa59ea3fee8fea6.json",
+					"name" : "NightlyStart",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlySubmit::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlySubmit-Debug-c5939a112b227fa7d000.json",
+					"name" : "NightlySubmit",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyTest::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyTest-Debug-22f9072c8beeed55c327.json",
+					"name" : "NightlyTest",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "NightlyUpdate::@70d6b3e08f1a0f888c2c",
+					"jsonFile" : "target-NightlyUpdate-Debug-bef22ffbbfc13aadd5d4.json",
+					"name" : "NightlyUpdate",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "gdcl::@bfbf33dd81f27c34cbd4",
+					"jsonFile" : "target-gdcl-Debug-1a6abd4330758f70e63e.json",
+					"name" : "gdcl",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfw::@17f284a5fc0809a54549",
+					"jsonFile" : "target-glfw-Debug-e29df1f3600120db500e.json",
+					"name" : "glfw",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ground_control::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ground_control-Debug-9ac73b25ab8f5b6301c0.json",
+					"name" : "ground_control",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "imgui::@be6ff0851bf84fdbeaa9",
+					"jsonFile" : "target-imgui-Debug-e9a6503dfb1bed7d14f1.json",
+					"name" : "imgui",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "lua_static::@13b9f312c6a75bb35fb6",
+					"jsonFile" : "target-lua_static-Debug-263141d9babf9415d8ec.json",
+					"name" : "lua_static",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "luac::@13b9f312c6a75bb35fb6",
+					"jsonFile" : "target-luac-Debug-6fdde4e56f7dc125107e.json",
+					"name" : "luac",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "serialib::@21f84a5499a88dc5b6b7",
+					"jsonFile" : "target-serialib-Debug-c669b530ca52e4778413.json",
+					"name" : "serialib",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "update_mappings::@17f284a5fc0809a54549",
+					"jsonFile" : "target-update_mappings-Debug-eb07f2229391a97ce3a5.json",
+					"name" : "update_mappings",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/netman/robotics/ground_control/build",
+		"source" : "/home/netman/robotics/ground_control"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

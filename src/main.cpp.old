@@ -1,0 +1,293 @@
+#include "chaiscript/chaiscript.hpp"
+#include "tui.h"
+
+#include "gdcl/net/net_serial.h"
+
+#include "stdio.h"
+#include "stdlib.h"
+
+#include <iostream>
+#include <string>
+#include <thread>
+#include <mutex>
+
+static chaiscript::ChaiScript chai;
+static gdcl::net::serial	  serial;
+
+static tui::text ui_log({{0, 0}, {100, 100}});
+
+void log(tui::symbol_string str, tui::color color = tui::COLOR::DARKGRAY) {
+	ui_log.setText(ui_log.getText() << color << str);
+}
+// void log(std::string str, tui::color color = tui::COLOR::DARKGRAY) {
+// 	ui_log.setText(ui_log.getText() << color << str);
+// }
+
+namespace robotscript {
+static void drive_tank(float right, float left) {
+	log("driving " + std::to_string(right) + " knots right and " +
+		std::to_string(left) + " knots left.... bitch \n");
+}
+
+static void drive_arcade(float speed, float turn) {
+	log("we goin' " + std::to_string(speed) + " fast and skidding at " +
+		std::to_string(turn) + " degrees per the millisecond.\n");
+}
+
+static void drive_stop() {
+	log("holdup\n");
+}
+
+static void serial_open(std::string port, int baurd_rate) {
+	if(serial.open(port.c_str(), baurd_rate) < 0) {
+		throw std::runtime_error("serial failed to open.");
+	}
+
+	if(! serial.is_open()) {
+		throw std::runtime_error("serial opened but then closed.");
+	}
+}
+
+static void serial_close() {
+	if(serial.is_open()) {
+		throw std::runtime_error("serial isn't open so it can be closed.");
+	}
+
+	if(serial.close() < 0) {
+		throw std::runtime_error("serial failed to close.");
+		;
+	}
+}
+
+bool	   is_serial_logging = false;
+std::mutex global_mutex;
+std::thread serial_thread;
+
+static void serial_log_start() {
+	is_serial_logging = true;
+
+	serial_thread = std::thread([&] {
+		while(is_serial_logging) {
+			{
+				const std::lock_guard<std::mutex> lock(global_mutex);
+
+				if(! serial.is_open()) {
+					throw std::runtime_error(
+						"serial cannot log because no connection is open.");
+				}
+
+				serial.pull();
+			}
+
+			char buf[serial.in.count()];
+
+			{
+				const std::lock_guard<std::mutex> lock(global_mutex);
+				serial.in.read(buf, serial.in.count());
+
+				log("serial > " + std::string(buf) + '\n', tui::COLOR::YELLOW);
+			}
+		}
+	});
+}
+
+static void serial_log_stop() {
+	is_serial_logging = false;
+	serial_thread.join();
+}
+
+static std::string serial_read() {
+	if(! serial.is_open()) {
+		throw std::runtime_error(
+			"serial cannot read because no connection is open.");
+	}
+
+	serial.pull();
+
+	char buf[serial.in.count()];
+	serial.in.read(buf, serial.in.count());
+
+	return std::string(buf);
+}
+
+static void serial_write(std::string str) {
+	if(! serial.is_open()) {
+		throw std::runtime_error(
+			"serial cannot write because no connection is open.");
+	}
+
+	serial.out.write((void*) str.c_str(), str.size());
+	serial.push();
+
+	log("serial < " + str + '\n', tui::COLOR::YELLOW);
+}
+
+static void sleep(int ms) {
+}
+
+static void clear() {
+	ui_log.setText(std::string());
+	ui_log.goToLine(0);
+}
+
+static void run_file(std::string filename) {
+	chai.eval_file(filename);
+}
+
+} // namespace robotscript
+
+int run(std::string cmd) {
+	// REDIRECT STDOUT because chaiscript is stuborn and it's 'print' function
+	// only prints to stdout.
+	size_t chaiout_size = 256;
+	char*  chaiout		= (char*) malloc(chaiout_size);
+	FILE*  chaiout_file = open_memstream((char**) &chaiout, &chaiout_size);
+	// FILE*  chaiout_file = fopen("chaiout.txt", "w");
+
+	FILE* old_stdout = stdout;
+	stdout			 = chaiout_file;
+	// FILE* chaiout = fopen("chaiout.txt", "r");
+
+	chaiscript::Boxed_Value val;
+	try {
+		val = chai.eval(
+			cmd,
+			chaiscript::exception_specification<
+				int, double, float, const std::string&, const std::exception&,
+				const chaiscript::exception::eval_error&>());
+
+		// print any chai outputs via print, puts, etc.
+		fflush(chaiout_file);
+
+		if(chaiout_size > 0) {
+			log(chaiout, tui::COLOR::WHITE);
+		}
+
+		try {
+			log(chai.eval<std::function<std::string(
+					const chaiscript::Boxed_Value& bv)>>("to_string")(val) +
+				'\n');
+		}
+		catch(...) {
+		}
+	}
+	catch(int e) {
+		log(std::to_string(e) + '\n', tui::COLOR::RED);
+	}
+	catch(double e) {
+		log(std::to_string(e) + '\n', tui::COLOR::RED);
+	}
+	catch(float e) {
+		log(std::to_string(e) + '\n', tui::COLOR::RED);
+	}
+	catch(const std::string& e) {
+		log(e + '\n', tui::COLOR::RED);
+	}
+	catch(const std::exception& e) {
+		log(std::string(e.what()) + '\n', tui::COLOR::RED);
+	}
+	// catch(chaiscript::exception::eval_error e) {
+	// 	log(std::string(e.what()) + '\n', tui::COLOR::RED);
+	// }
+
+	stdout = old_stdout;
+	fclose(chaiout_file);
+
+	free(chaiout);
+
+	return 0;
+}
+
+int main(int argc, char** argv) {
+	chai.add(chaiscript::fun(&robotscript::drive_tank), "drive_tank");
+	chai.add(chaiscript::fun(&robotscript::drive_arcade), "drive_arcade");
+	chai.add(chaiscript::fun(&robotscript::drive_stop), "drive_stop");
+
+	chai.add(chaiscript::fun(&robotscript::serial_open), "serial_open");
+	chai.add(chaiscript::fun(&robotscript::serial_close), "serial_close");
+
+	chai.add(chaiscript::fun(&robotscript::serial_log_start),
+			 "serial_log_start");
+	chai.add(chaiscript::fun(&robotscript::serial_log_stop), "serial_log_stop");
+
+	chai.add(chaiscript::fun(&robotscript::serial_read), "serial_read");
+	chai.add(chaiscript::fun(&robotscript::serial_write), "serial_write");
+
+	chai.add(chaiscript::fun(&robotscript::sleep), "sleep");
+	chai.add(chaiscript::fun(&robotscript::clear), "clear");
+	chai.add(chaiscript::fun(&robotscript::run_file), "run_file");
+
+	// ~~~~~~~~~~~~~~~ UI SHIT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	tui::box main_box({{0, 0}, {100, 100}});
+	main_box.setTitle("ground_control");
+	main_box.setTitlePosition(tui::POSITION::BEGIN);
+
+	// input text:
+	tui::input_text ui_input({{0, 0}, {100, 0}});
+	ui_input.setPositionFunction([&] {
+		return tui::vec2i(4, main_box.getSize().y - 2);
+	});
+	ui_input.setSizeFunction([&] {
+		return tui::vec2i(main_box.getSize().x - 6, 1);
+	});
+
+	ui_input.useWordBreaking(false);
+
+	ui_input.activate();
+
+	// log text:
+	ui_log.setPositionFunction([&] {
+		return tui::vec2i(1, 1);
+	});
+	ui_log.setSizeFunction([&] {
+		return tui::vec2i(main_box.getSize().x - 2, main_box.getSize().y - 3);
+	});
+
+	ui_input.useWordBreaking(false);
+
+	ui_log.activate();
+
+	tui::init();
+
+	std::vector<std::string> history;
+	int						 history_index = history.size() - 1;
+
+	while(! tui::input::isKeyPressed(tui::input::KEY::ESC)) {
+		if(tui::input::isKeyPressed(tui::input::KEY::ENTER)) {
+			tui::symbol_string str = ui_input.getText();
+			ui_input.setText(tui::symbol_string() << tui::COLOR::WHITE);
+			ui_input.setCursorIndex(0);
+
+			run(str.getStdString());
+
+			history.push_back(str.getStdString());
+			history_index = history.size();
+
+			// ui_log.setText(ui_log.getText()
+			// 			   << tui::COLOR::DARKGRAY << str.getStdString());
+			ui_log.goToLine(ui_log.getNumberOfLines());
+		}
+		else if(tui::input::isKeyPressed(tui::input::KEY::UP)) {
+			history_index = history_index - 1 <= 0 ? 0 : history_index - 1;
+			ui_input.setText(history[history_index]);
+			ui_input.setCursorIndex(ui_input.getText().size());
+		}
+		else if(tui::input::isKeyPressed(tui::input::KEY::DOWN)) {
+			history_index =
+				history_index + 1 >= history.size() ? 0 : history_index + 1;
+			ui_input.setText(history[history_index]);
+			ui_input.setCursorIndex(ui_input.getText().size());
+		}
+
+		tui::output::clear(); // clears buffer and resizes it to terminal size
+
+		main_box.setSymbolAt(tui::symbol('>'), {3, main_box.getSize().y - 2});
+		tui::output::draw(main_box); // copies widget to buffer
+		tui::output::draw(ui_input);
+		tui::output::draw(ui_log);
+
+		tui::output::display(); // displays buffer content
+	}
+
+	return 0;
+}
