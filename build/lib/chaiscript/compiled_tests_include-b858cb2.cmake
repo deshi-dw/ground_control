@@ -1,5 +1,0 @@
-if(EXISTS "/home/netman/robotics/ground_control/build/lib/chaiscript/compiled_tests_tests-b858cb2.cmake")
-  include("/home/netman/robotics/ground_control/build/lib/chaiscript/compiled_tests_tests-b858cb2.cmake")
-else()
-  add_test(compiled_tests_NOT_BUILT-b858cb2 compiled_tests_NOT_BUILT-b858cb2)
-endif()
