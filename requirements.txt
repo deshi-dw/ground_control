@@ -10,4 +10,5 @@ sol2 -> /lib/sol2 (https://github.com/ThePhD/sol2)
 
 # EXTERNAL:
 opengl3
+ttf-hack font
 

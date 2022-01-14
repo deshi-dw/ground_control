@@ -5,14 +5,10 @@
 
 namespace gdcl {
 
-namespace net {
-
 struct nrf24l01 : radio {
 	int pull() override;
 	int push() override;
 };
-
-} // namespace net
 
 } // namespace gdcl
 

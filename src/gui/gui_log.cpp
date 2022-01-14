@@ -79,6 +79,9 @@ void log::draw() {
 		ImGui::SetItemDefaultFocus();
 		ImGui::SetKeyboardFocusHere(-1);
 
+		on_input(input);
+		input.clear();
+
 		scroll_to_bottom = true;
 	}
 

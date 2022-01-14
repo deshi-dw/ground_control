@@ -7,18 +7,16 @@
 #include "sol/sol.hpp"
 
 namespace gdcl {
-namespace rs {
 
 struct rs {
     sol::state lua;
 
-    rs();
-    ~rs();
+    // rs();
+    // ~rs();
 
     const std::string run(const std::string& script);
 };
 
-} // namespace rs
 } // namespace gdcl
 
 #endif

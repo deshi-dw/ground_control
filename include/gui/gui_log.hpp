@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <functional>
 
 namespace gui {
 
@@ -27,6 +28,8 @@ struct log {
 	std::vector<item>		 items;
 
 	std::string input;
+
+	std::function<void(const std::string&)> on_input;
 
 	void print(const std::string&);
 	void warn(const std::string&);

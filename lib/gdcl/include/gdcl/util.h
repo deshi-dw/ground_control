@@ -1,4 +1,8 @@
+#ifndef GDCL_UTIL_H
+#define GDCL_UTIL_H
+
 #include <climits>
+#include <cstddef>
 
 namespace gdcl {
 
@@ -24,3 +28,5 @@ template <typename T> T swap_endian(T u) {
 }
 
 } // namespace gdcl
+
+#endif

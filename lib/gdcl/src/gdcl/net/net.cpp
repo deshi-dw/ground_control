@@ -9,7 +9,6 @@
 #include <string.h>
 
 namespace gdcl {
-namespace net {
 
 // TODO add a stream reader that can do all sorts of cool things like read until
 // the next \n character and other stuffs.
@@ -40,11 +39,7 @@ void stream::seek(size_t index) {
 }
 
 size_t stream::count() {
-	if(end > start) {
-		return end - start;
-	}
-
-	return (end - buffer) + (size - (start - buffer));
+	return end - buffer;
 }
 
 int stream::read(void* data, size_t size) {
@@ -140,5 +135,4 @@ int test_radio::push() {
 	return 0;
 }
 
-} // namespace net
 } // namespace gdcl

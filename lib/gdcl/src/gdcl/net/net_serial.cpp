@@ -8,7 +8,7 @@
 
 namespace gdcl {
 
-int net::serial::open(const char* port, int baud_rate) {
+int serial::open(const char* port, int baud_rate) {
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.
 	if(serial.isDeviceOpen()) {
 		return -1;
@@ -28,7 +28,7 @@ int net::serial::open(const char* port, int baud_rate) {
 	return 0;
 }
 
-int net::serial::close() {
+int serial::close() {
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.
 	if(! serial.isDeviceOpen()) {
 		return -1;
@@ -46,17 +46,17 @@ int net::serial::close() {
 	return 0;
 }
 
-bool net::serial::is_open() {
+bool serial::is_open() {
 	return serial.isDeviceOpen();
 }
 
-int net::serial::pull() {
+int serial::pull() {
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.
 	int read_size = serial.available();
 #else // Arduino implementation.
 	int read_size = Serial.available();
 #endif
-	
+
 	// don't read more than we can store.
 	if(read_size > in.size) {
 		read_size = in.size;
@@ -89,11 +89,12 @@ int net::serial::pull() {
 	return read_size;
 }
 
-int net::serial::push() {
+int serial::push() {
 	size_t	write_size = out.count();
 	uint8_t data[write_size];
 
 	// read out data to a buffer and then write it to serial.
+	// FIXME: out is reading zeros (I think)
 	out.read(data, write_size);
 
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.

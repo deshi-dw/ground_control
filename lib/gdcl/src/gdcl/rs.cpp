@@ -1,4 +1,4 @@
-#include "gdcl/rs/rs.h"
+#include "gdcl/rs.h"
 
 #include <string>
 #include <iostream>
@@ -6,13 +6,12 @@
 #include <utility>
 
 namespace gdcl {
-namespace rs {
 
-rs::rs() {
-}
+// rs::rs() {
+// }
 
-rs::~rs() {
-}
+// rs::~rs() {
+// }
 
 static const std::string to_string(sol::object&);
 static const std::string table_to_string(const sol::table&);
@@ -50,22 +49,35 @@ static const std::string to_string(sol::object& o) {
 }
 
 const std::string rs::run(const std::string& script) {
-	lua.script_file(script);
+	// lua.script_file(script);
+	sol::object obj;
 
-	sol::object d = lua["d"];
+	try {
+		obj = lua.script("return " + script);
+	}
+	catch(sol::error e) {
+		// TODO fix this because I hate it. also, the error still prints in the
+		// console it is running in which is bad.
+		try {
+			obj = lua.script(script);
+		}
+		catch(sol::error e2) {
+			throw std::runtime_error(e2.what());
+		}
+	}
+	// sol::object d = lua["d"];
 
 	// const std::string& somestr = d["somestr"];
 	// std::cout << somestr + '\n';
 
-	if(! d.valid()) {
-		std::cout << "wha the fuck? \n";
-	}
-	else {
-		std::cout << to_string(d) + '\n';
-	}
+	// if(! d.valid()) {
+	// 	std::cout << "wha the fuck? \n";
+	// }
+	// else {
+	// 	std::cout << to_string(d) + '\n';
+	// }
 
-	return "";
+	return to_string(obj);
 }
 
-} // namespace rs
 } // namespace gdcl

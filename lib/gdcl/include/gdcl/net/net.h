@@ -5,8 +5,6 @@
 #include <stdint.h>
 
 namespace gdcl {
-
-namespace net {
 struct stream {
 	uint8_t* start;
 	uint8_t* end;
@@ -43,8 +41,6 @@ struct test_radio : radio {
 	int pull() override;
 	int push() override;
 };
-
-} // namespace net
 
 } // namespace gdcl
 

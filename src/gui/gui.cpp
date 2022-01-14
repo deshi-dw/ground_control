@@ -79,7 +79,7 @@ gui::gui::gui(const std::string& title, int width, int height) {
 
 	// Load Fonts
 	io.Fonts->AddFontFromFileTTF("/usr/share/fonts/TTF/Hack-Regular.ttf",
-								 10.0f);
+								 13.0f);
 }
 
 int gui::gui::run(std::function<void()> routine) {

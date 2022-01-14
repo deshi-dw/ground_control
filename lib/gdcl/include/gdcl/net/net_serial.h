@@ -9,8 +9,6 @@
 
 namespace gdcl {
 
-namespace net {
-
 struct serial : radio {
 
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.
@@ -25,8 +23,6 @@ struct serial : radio {
 	int pull() override;
 	int push() override;
 };
-
-} // namespace net
 
 } // namespace gdcl
 
