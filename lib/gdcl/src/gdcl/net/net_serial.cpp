@@ -80,6 +80,7 @@ int serial::pull() {
 #endif
 
 	// write incoming serial data to in stream.
+	out.seek(0);
 	in.write(data, read_size);
 
 	// reset in buffer.
@@ -95,6 +96,7 @@ int serial::push() {
 
 	// read out data to a buffer and then write it to serial.
 	// FIXME: out is reading zeros (I think)
+	out.seek(0);
 	out.read(data, write_size);
 
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.

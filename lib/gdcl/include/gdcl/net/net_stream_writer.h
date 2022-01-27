@@ -16,24 +16,18 @@ struct stream_writer {
 
 	stream_writer(stream& strm, endian endianess = endian::little);
 
-	void write(const uint16_t value);
-	void write(const uint32_t value);
-	void write(const uint64_t value);
-
 	void write(const std::string& value);
-
-	template <typename T> void write(T& value);
+	void write(uint16_t value);
+	void write(uint32_t value);
+	void write(uint64_t value);
+	void write(int value);
+	void write(long value);
+	void write(float value);
+	void write(double value);
 
 	template <typename T>
 	void generic_write(T* value, bot_size_t size, bool endian_aware = false);
-	void generic_write(uint16_t* value, bot_size_t size);
-	void generic_write(uint32_t* value, bot_size_t size);
-	void generic_write(uint64_t* value, bot_size_t size);
 };
-
-template <typename T> void stream_writer::write(T& value) {
-	generic_write(&value, sizeof(value));
-}
 
 template <typename T> void
 	stream_writer::generic_write(T* value, bot_size_t size, bool endian_aware) {
