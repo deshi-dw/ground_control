@@ -10,7 +10,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/ground_control",
             "args": [
-                "${workspaceFolder}/lua/test.lua"
+                "1",
+                "/dev/ttyACM0"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

@@ -7,13 +7,16 @@ namespace gui {
 
 void log::print(const std::string& val) {
 	items.push_back({val, {0.65f, 0.65f, 0.65f}});
+	scroll_to_bottom = true;
 }
 
 void log::warn(const std::string& val) {
 	items.push_back({"[warn] " + val, {1.0f, 1.0f, 0.5f}});
+	scroll_to_bottom = true;
 }
 void log::error(const std::string& val) {
 	items.push_back({"[error] " + val, {1.0f, 0.5f, 0.5f}});
+	scroll_to_bottom = true;
 }
 
 void log::draw() {
@@ -79,7 +82,10 @@ void log::draw() {
 		ImGui::SetItemDefaultFocus();
 		ImGui::SetKeyboardFocusHere(-1);
 
-		on_input(input);
+		if(on_input) {
+			on_input(input);
+		}
+
 		input.clear();
 
 		scroll_to_bottom = true;

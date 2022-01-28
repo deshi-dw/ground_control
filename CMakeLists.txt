@@ -26,6 +26,10 @@ set(ground_control_sources
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/serialib)
 include_directories(${PROJECT_SOURCE_DIR}/lib/serialib)
 
+# add libstem_gamepad
+include_directories(${PROJECT_SOURCE_DIR}/lib/libstem_gamepad/source)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/libstem_gamepad)
+
 # add glfw
 set(GLFW_BUILD_EXAMPLES OFF)
 set(GLFW_BUILD_TESTS OFF)
@@ -53,12 +57,6 @@ include_directories(${PROJECT_SOURCE_DIR}/lib/gdcl/include)
 include_directories( ${PROJECT_SOURCE_DIR}/include )
 include_directories( ${PROJECT_SOURCE_DIR}/lib )
 add_executable(ground_control ${ground_control_sources})
-
-
-# link dynamic link library. (required for chaiscript)
-target_link_libraries(ground_control dl)
-# link pthread library. (required for chaiscript)
-target_link_libraries(ground_control pthread)
 
 # link serialib
 target_link_libraries(ground_control serialib)

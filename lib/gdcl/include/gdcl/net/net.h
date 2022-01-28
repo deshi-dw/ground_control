@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 namespace gdcl {
+	
 struct stream {
 	uint8_t* start;
 	uint8_t* end;

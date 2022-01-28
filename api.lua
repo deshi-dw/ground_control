@@ -11,14 +11,22 @@ input.add('drive_y', {
 });
 
 function bot:init()
-	serial = serial.new("/dev/ttyUSB0", 9600);
+	bot.connect("/dev/ttyUSB0", 9600);
+	bot.print("Hello, world.");
 end
 
 function bot:kill()
-	serial.close();
+	bot.disconnect();
 end
 
 function bot:loop()
+	bot.set_motors(1.0, 1.0);
+end
+
+function inpt:axis(value)
+end
+
+function inpt:button(state)
 end
 
 --[[ c++

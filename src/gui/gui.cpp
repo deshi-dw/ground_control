@@ -2,6 +2,8 @@
 
 // Modified from the GLFW + OpenGL 3 imgui example.
 
+#include "gdcl/timer.h"
+
 #include "imgui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
@@ -82,29 +84,46 @@ gui::gui::gui(const std::string& title, int width, int height) {
 								 13.0f);
 }
 
-int gui::gui::run(std::function<void()> routine) {
+int gui::gui::run(std::function<void()> routine, long draw_interval) {
+	long time_cur  = 0;
+	long time_prev = time_cur;
+
 	// Main loop
 	while(! glfwWindowShouldClose(window)) {
+		time_cur	= gdcl::time();
+		if(time_cur - time_prev > draw_interval) {
+			redraw = true;
+			time_prev = time_cur;
+		}
+
 		// Poll and handle events (inputs, window resize, etc.)
 		glfwPollEvents();
 
 		// Start the Dear ImGui frame
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
+		if(redraw) {
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+			ImGui::NewFrame();
+		}
 
-		routine();
+		if(routine) {
+			routine();
+		}
 
 		// Rendering
-		ImGui::Render();
-		int display_w, display_h;
-		glfwGetFramebufferSize(window, &display_w, &display_h);
-		glViewport(0, 0, display_w, display_h);
-		glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		if(redraw) {
+			ImGui::Render();
+			int display_w, display_h;
+			glfwGetFramebufferSize(window, &display_w, &display_h);
+			glViewport(0, 0, display_w, display_h);
+			glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
+			glClear(GL_COLOR_BUFFER_BIT);
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-		glfwSwapBuffers(window);
+			glfwSwapBuffers(window);
+		}
+
+		redraw = false;
 	}
 
 	return 0;
