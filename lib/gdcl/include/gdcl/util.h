@@ -3,6 +3,7 @@
 
 #include <climits>
 #include <cstddef>
+#include <string>
 
 namespace gdcl {
 
@@ -26,6 +27,12 @@ template <typename T> T swap_endian(T u) {
 
 	return dest.u;
 }
+
+const std::string exe_path();
+
+bool file_exists(const std::string& path);
+int file_write(const std::string& path, const std::string& content);
+int file_delete(const std::string& path);
 
 } // namespace gdcl
 

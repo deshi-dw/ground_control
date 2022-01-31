@@ -12,7 +12,9 @@ namespace inpt {
 std::unordered_map<unsigned int, dev> devices;
 
 std::function<void(dev&, int, button_state)> on_button;
-std::function<void(dev&, int, float)>  on_axis;
+std::function<void(dev&, int, float)>		 on_axis;
+
+std::function<void(dev&, event)> on_input;
 
 static std::unordered_map<unsigned int, Gamepad_device*> raw_devices;
 
@@ -39,18 +41,25 @@ static void on_dev_remove(struct Gamepad_device* device, void* context) {
 }
 
 static void on_btn_down(struct Gamepad_device* device, unsigned int buttonID,
-						double timestamp, void* context) {    
-    // if the device doesn't exist in the device map, don't try to update it.
+						double timestamp, void* context) {
+	// if the device doesn't exist in the device map, don't try to update it.
 	if(devices.find(device->deviceID) == devices.end()) {
 		return;
 	}
 
-    // call global button event.
-    if(on_button) {
-        on_button(devices[device->deviceID], buttonID, button_state::down);
-    }
+	// call global button event.
+	if(on_button) {
+		on_button(devices[device->deviceID], buttonID, button_state::down);
+	}
 
-    // call local button event.
+	// call global on input event.
+	if(on_input) {
+		on_input(devices[device->deviceID],
+				 (event){event::type::button,
+						 .button = {buttonID, button_state::down}});
+	}
+
+	// call local button event.
 	if(devices[device->deviceID].on_button != nullptr) {
 		devices[device->deviceID].on_button(buttonID, button_state::down);
 	}
@@ -63,12 +72,19 @@ static void on_btn_up(struct Gamepad_device* device, unsigned int buttonID,
 		return;
 	}
 
-    // call global button event.
-    if(on_button) {
-        on_button(devices[device->deviceID], buttonID, button_state::up);
-    }
+	// call global button event.
+	if(on_button) {
+		on_button(devices[device->deviceID], buttonID, button_state::up);
+	}
 
-    // call local button event.
+	// call global on input event.
+	if(on_input) {
+		on_input(devices[device->deviceID],
+				 (event){event::type::button,
+						 .button = {buttonID, button_state::up}});
+	}
+
+	// call local button event.
 	if(devices[device->deviceID].on_button != nullptr) {
 		devices[device->deviceID].on_button(buttonID, button_state::up);
 	}
@@ -82,12 +98,18 @@ static void on_axis_move(struct Gamepad_device* device, unsigned int axisID,
 		return;
 	}
 
-    // call global axis event.
-    if(on_axis) {
-        on_axis(devices[device->deviceID], axisID, value);
-    }
+	// call global axis event.
+	if(on_axis) {
+		on_axis(devices[device->deviceID], axisID, value);
+	}
 
-    // call local axis event.
+	// call global on input event.
+	if(on_input) {
+		on_input(devices[device->deviceID],
+				 (event){event::type::axis, .axis = {axisID, value}});
+	}
+
+	// call local axis event.
 	if(devices[device->deviceID].on_axis != nullptr) {
 		devices[device->deviceID].on_axis(axisID, value);
 	}

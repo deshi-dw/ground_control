@@ -7,25 +7,27 @@
 
 - lua needs to be able to communicate with inputs and sending / receive packets.
 
-// TODO implement proper timing, compatible with both pc, and arduino
+- lua api example:
 
-- persice timing is needed for a bunch of stuff so it would be convinient to
-  have a simple way to do it.
+bot:start()
+  - start the robot. enables movement and timer.
 
-- example code:
+bot:stop()
+  - stops the robot. disables movement and timer.
 
-gdcl::timer send_state_timer( 100, [&] {
-  bot.send_state();
-}); // every 100 milliseconds, send robot state.
+bot:reset()
+  - resets the robots internal timer.
 
-gdcl::timer receive_packets_timer( 20, [&] {
-  bot.receive();
-}); // every 20 milliseconds, receive packets.
 
-while(1) {
-  send_state_timer.interval();
-  receive_packets_timer.interval();
-}
+bot:time()
+  - get the robots time since started.
+
+
+bot:set_motors(motors)
+  - send motor values to the robot.
+
+bot:get_motors()
+  - get the current motor speeds.
 
 // TODO send and receive robot state packets
 
@@ -35,6 +37,10 @@ while(1) {
 
   This is better than sending a 'get_motor_speed' packet for example and then
   waiting for a return packet to read.
+
+// TODO auto detect serial COM path
+
+- this should be easy to do since platformio does it.
 
 // TODO add packet display gui element
 

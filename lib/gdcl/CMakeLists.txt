@@ -29,16 +29,17 @@ add_library(gdcl
  include/gdcl/net/net_serial.h
  include/gdcl/net/net_nrf24l01.h
  include/gdcl/net/net_stream_writer.h
- include/gdcl/rs.h
+ include/gdcl/script.h
  include/gdcl/bot.h
  include/gdcl/input.h
+ include/gdcl/gdcl.h
  src/gdcl/util.cpp
  src/gdcl/timer.cpp
  src/gdcl/net/net.cpp
  src/gdcl/net/net_serial.cpp
  src/gdcl/net/net_nrf24l01.cpp
  src/gdcl/net/net_stream_writer.cpp
- src/gdcl/rs.cpp
+ src/gdcl/script.cpp
  src/gdcl/bot.cpp
  src/gdcl/input.cpp
 )

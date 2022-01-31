@@ -95,7 +95,6 @@ int serial::push() {
 	uint8_t data[write_size];
 
 	// read out data to a buffer and then write it to serial.
-	// FIXME: out is reading zeros (I think)
 	out.seek(0);
 	out.read(data, write_size);
 
