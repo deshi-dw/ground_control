@@ -60,7 +60,7 @@ int load(const std::string& config_path) {
 		(type) inpt.event_button = { uint id, inpt.button_state state }
 		(type) inpt.event_axis   = { uint id, float state }
 
-		(enum) inpt.event.type = { button, axis }
+		(enum) inpt.event_type = { button, axis }
 
 		(type) inpt.event = {
 			inpt.event.type type,
@@ -103,6 +103,7 @@ int load(const std::string& config_path) {
 	// load the main file. this should initialize things and assign functions
 	// for running.
 	try {
+		// TODO support absolute paths
 		lua.safe_script_file(gdcl::exe_path() + '/' + main_file.value());
 	}
 	catch(sol::error& e) {

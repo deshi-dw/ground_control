@@ -65,17 +65,24 @@ int main(int argc, char** argv) {
 	};
 
 	gdcl::timer test_timer;
+	gdcl::timer loop_timer;
 
 	// initialize script world.
 	// TODO this is all temp stuff anyways but this should go somewhere else and
 	//      have a gui element that will trigger init and kill in the script.
+
+	gdcl::time_start();
 	gdcl::script::func_init();
 	is_script_init = true;
 
 	ui.run([&] {
 		// ImGui::ShowDemoWindow(&is_open);
 		gdcl::inpt::poll();
-		gdcl::script::func_loop();
+
+		// call loop function every 20 ms.
+		loop_timer.call(20, [&] {
+			gdcl::script::func_loop();
+		});
 
 		if(ui.redraw) {
 			log.draw();

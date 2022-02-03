@@ -1,8 +1,3 @@
-// TODO consider fleshing out input system
-
-- I could add more complexity to the input system in c++ but I'm more leaning
-  towards having a simple c++ input system and then fleshing things out in lua.
-
 // TODO add lua intergration
 
 - lua needs to be able to communicate with inputs and sending / receive packets.
