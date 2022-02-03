@@ -25,6 +25,7 @@ struct timer {
 	void call(long interval, action on_interval, void* context = nullptr);
 };
 
+void time_start();
 long time();
 
 } // namespace gdcl

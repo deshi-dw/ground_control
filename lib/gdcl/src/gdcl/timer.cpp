@@ -9,6 +9,8 @@ namespace gdcl {
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.
 static bool											  is_time_started = false;
 static std::chrono::high_resolution_clock::time_point start_time;
+#else // Arduino implementation:
+long start_time;
 #endif
 
 void timer::call(long interval, timer::action on_interval, void* context) {
@@ -41,14 +43,23 @@ void timer::call(long interval, timer::action on_interval, void* context) {
 #endif
 }
 
+void time_start() {
+#if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.
+	using namespace std::chrono;
+	start_time		= high_resolution_clock::now();
+	is_time_started = true;
+#else // Arduino implementation:
+	start_time = millis();
+#endif
+}
+
 long time() {
 #if ! defined(ARDUINO) // Windows, Linux, and Mac implementation.
 	using namespace std::chrono;
 
 	// initialize the time if it hasn't already been initialized.
 	if(! is_time_started) {
-		start_time		= high_resolution_clock::now();
-		is_time_started = true;
+		time_start()
 	}
 
 	return duration_cast<milliseconds>(high_resolution_clock::now() -
@@ -56,7 +67,7 @@ long time() {
 		.count();
 
 #else // Arduino implementation.
-	return millis();
+	return millis() - start_time;
 
 #endif
 }
