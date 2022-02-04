@@ -17,57 +17,65 @@ local cfg = {};
 --      left_stick_y      left_stick_y
 
 local dual_action_map = {
-	["button_1"] = 0,
-	["button_2"] = 1,
-	["button_3"] = 2,
-	["button_4"] = 3,
+	buttons = {
+		[0] = "button_1",
+		[1] = "button_2",
+		[2] = "button_3",
+		[3] = "button_4",
 
-	["right_stick_button"] = 11,
-	["left_stick_button"] = 10,
+		[10] = "left_stick_button",
+		[11] = "right_stick_button",
 
-	["left_bumper"] = 4,
-	["right_bumper"] = 5,
-	["left_back_bumper"] = 6,
-	["right_back_bumper"] = 7,
+		[4] = "left_bumper",
+		[5] = "right_bumper",
+		[6] = "left_back_bumper",
+		[7] = "right_back_bumper",
 
-	["select"] = 8,
-	["start"] = 9,
+		[8] = "select",
+		[9] = "start",
+	},s
+	axis = {
+		[0] = "left_stick_x",
+		[1] = "left_stick_y",
 
-	["left_stick_x"] = 0,
-	["left_stick_y"] = 1,
-
-	["right_stick_x"] = 2,
-	["right_stick_y"] = 3,
+		[2] = "right_stick_x",
+		[3] = "right_stick_y",
+	}
 };
 
 local xbox360_map = {
-	["button_1"] = 2,
-	["button_2"] = 0,
-	["button_3"] = 1,
-	["button_4"] = 3,
+	buttons = {
+		[2] = "button_1",
+		[0] = "button_2",
+		[1] = "button_3",
+		[3] = "button_4",
 
-	["right_stick_button"] = 11,
-	["left_stick_button"] = 10,
+		[10] = "left_stick_button",
+		[11] = "right_stick_button",
 
-	["left_bumper"] = 4,
-	["right_bumper"] = 5,
+		[4] = "left_bumper",
+		[5] = "right_bumper",
 
-	["left_trigger"] = 2,
-	["right_trigger"] = 5,
+		[6] = "select",
+		[7] = "start",
+	},
+	axis = {
+		[2] = "left_trigger",
+		[5] = "right_trigger",
 
-	["start"] = 7,
-	["select"] = 6,
+		[0] = "left_stick_x",
+		[1] = "left_stick_y",
 
-	["left_stick_x"] = 0,
-	["left_stick_y"] = 1,
-
-	["right_stick_x"] = 3,
-	["right_stick_y"] = 4,
+		[3] = "right_stick_x",
+		[4] = "right_stick_y",
+	}
 };
 
+-- TODO add proper product and vendor ids so the gamepad can be automatically
+--      detected.
 cfg.inpt_map = {
-	["dual_action"] = dual_action_map,
-	["xbox360"] = xbox360_map
+	["dual_action"] = { pid = 0, vid = 0, map = dual_action_map },
+	["xbox360"] = { pid = 0, vid = 0, map = xbox360_map },
 };
 
 cfg.bot = {
