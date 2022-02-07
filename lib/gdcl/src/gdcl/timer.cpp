@@ -59,7 +59,7 @@ long time() {
 
 	// initialize the time if it hasn't already been initialized.
 	if(! is_time_started) {
-		time_start()
+		time_start();
 	}
 
 	return duration_cast<milliseconds>(high_resolution_clock::now() -

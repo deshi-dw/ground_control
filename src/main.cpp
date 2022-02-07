@@ -26,24 +26,16 @@ int main(int argc, char** argv) {
 	gui::gui ui("help", 1280, 720);
 	gui::log log;
 
-	bool is_open;
 	bool is_script_init;
 
-	gdcl::inpt::on_axis = [&](gdcl::inpt::dev& dev, int id, float value) {
-		log.print("inpt dev[" + std::to_string(dev.id) + "], axis " +
-				  std::to_string(id) + " : " + std::to_string(value));
-	};
-
-	gdcl::inpt::on_button = [&](gdcl::inpt::dev& dev, int id,
-								gdcl::inpt::button_state state) {
-		log.print("inpt dev[" + std::to_string(dev.id) + "], btn " +
-				  std::to_string(id) + " : " +
-				  std::to_string(static_cast<int>(state)));
-	};
-
 	gdcl::inpt::on_input = [&](gdcl::inpt::dev& dev, gdcl::inpt::event e) {
-		if(is_script_init && gdcl::script::func_input) {
-			gdcl::script::func_input(e);
+		if(is_script_init) {
+			try {
+				gdcl::script::input(dev, e);
+			}
+			catch(gdcl::script::error err) {
+				log.error(err.what());
+			}
 		}
 	};
 
@@ -57,9 +49,9 @@ int main(int argc, char** argv) {
 
 	log.on_input = [&](const std::string& str) {
 		try {
-			log.print(gdcl::script::execute(str));
+			log.print("-> " + gdcl::script::execute(str));
 		}
-		catch(std::runtime_error e) {
+		catch(gdcl::script::error e) {
 			log.error(e.what());
 		}
 	};
@@ -72,16 +64,26 @@ int main(int argc, char** argv) {
 	//      have a gui element that will trigger init and kill in the script.
 
 	gdcl::time_start();
-	gdcl::script::func_init();
+	try {
+		gdcl::script::init();
+	}
+	catch(gdcl::script::error e) {
+		log.error(e.what());
+	}
+
 	is_script_init = true;
 
 	ui.run([&] {
-		// ImGui::ShowDemoWindow(&is_open);
 		gdcl::inpt::poll();
 
 		// call loop function every 20 ms.
 		loop_timer.call(20, [&] {
-			gdcl::script::func_loop();
+			try {
+				gdcl::script::loop();
+			}
+			catch(gdcl::script::error e) {
+				log.error(e.what());
+			}
 		});
 
 		if(ui.redraw) {
@@ -93,7 +95,13 @@ int main(int argc, char** argv) {
 		});
 	});
 
-	gdcl::script::func_kill();
+	try {
+	gdcl::script::kill();
+	}
+	catch(gdcl::script::error e) {
+		log.error(e.what());
+	}
+
 	gdcl::inpt::deinit();
 
 	return 0;

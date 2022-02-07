@@ -14,25 +14,23 @@ end
 -- print("inpt:");
 -- print_table(inpt, 1);
 
-function init()
+function gdcl_init()
 	print("init called.");
 end
 
-function kill()
+function gdcl_kill()
 	print("kill called.");
 end
 
+-- EVENT_BUTTON = 0;
+-- EVENT_AXIS = 0;
+
+-- BUTTON_NONE = 0;
+-- BUTTON_DOWN = 0;
+-- BUTTON_UP = 0;
+-- BUTTON_HELD = 0;
+
 local inpt = {
-
-	--- a tabel of all the types of events there are assigned to a numerical
-	--- value.
-	--- (Note that the values here might not reflect the actual values assigned.)
-	--- @class event_type
-	event_type = {
-		button = 0,
-		axis = 1
-	},
-
 	--- a tabel of each possible button state assigned to a numerical value.
 	--- (Note that the values here might not reflect the actual values assigned.)
 	--- @class button_state
@@ -46,33 +44,43 @@ local inpt = {
 	event = {
 		--- the type of the event. This dictates which field in the event is
 		--- filled in.
-		--- ie. if `event.type == inpt.event_type.button`, then `event.button` is used.
-		--- @type event_type
 		type = 0,
 
-		--- a button event. called when a button is pushed.
-		--- @class event_button
-		button = {
-			--- the id of the button pressed.
-			--- @type integer
-			id = 0,
+		--- the state of the button. (only set when event type is EVENT_BUTTON)
+		--- @type button_state
+		state = 0,
 
-			--- the state of the button pressed.
-			--- @type button_state
-			state = 0
-		},
-		
-		--- an axis event. called when an axis is moved.
-		--- @class event_axis
-		axis = {
-			--- the id of the axis moved.
-			--- @type integer
-			id = 0,
+		--- the value of the axis.
+		--- @type number
+		value = 0
+	},
 
-			--- the value of the axis.
-			--- @type number
-			value = 0
-		}
+	--- an object that holds information about the input device that triggered an input.
+	--- @class dev
+	dev = {
+		--- the dynamic id according to what order the device was plugged in.
+		--- @type integer
+		id = 0,
+
+		--- the name of the device.
+		--- @type string
+		name = " ",
+
+		--- the product id according to the HID spec.
+		--- @type integer
+		product_id = 0,
+
+		--- the vendor id according to the HID spec.
+		--- @type integer
+		vendor_id = 0,
+
+		--- an array of axis values. the index is equal to the axis id.
+		--- @type table
+		axis = {},
+
+		--- an array of button state values. the index is equal to the button id.
+		--- @type table
+		buttons = {}
 	}
 };
 
@@ -120,7 +128,7 @@ local bot_inpt = {
 	drive_x = 0.0,
 };
 
-function loop()
+function gdcl_loop()
 	-- -- Do nothing if the robot hasn't been started.
 	-- if(! bot.started()) then
 	-- 	return;
@@ -162,21 +170,27 @@ function teleop()
 end
 
 ---@param e event
-function input(e)
-	if(e.type == inpt.event_type.axis) then
-	    
-		print("axis("..tostring(e.axis.id)..")", e.axis.value);
-		
-		if(e.axis.id == 4) then
-			bot_inpt.drive_y_up = e.axis.value;
-		elseif(e.axis.id == 5) then
-			bot_inpt.drive_y_down = e.axis.value;
-		elseif(e.axis.id == 2) then
-			bot_inpt.drive_x = e.axis.value;
-		end
+---@param dev dev
+function gdcl_input(dev, e)
+	-- print_table(dev, 1);
 
-	elseif(e.type == inpt.event_type.button) then
-	    print("button("..tostring(e.button.id)..")", e.button.state);
+	local dev_str = "["..tostring(dev.id).."] "..dev.name..": ";
+	local event_str = "";
+
+	if(e.type == EVENT_BUTTON) then
+		event_str = "button ";
+
+		if(e.state == BUTTON_DOWN) then
+			event_str = event_str.."DOWN";
+		elseif(e.state == BUTTON_UP) then
+			event_str = event_str.."UP";
+		elseif(e.state == BUTTON_HELD) then
+			event_str = event_str.."HELD";
+		end
+	elseif (e.type == EVENT_AXIS) then
+		event_str = "axis ";
+		event_str = event_str..(tostring(e.value));
 	end
 
+	print(dev_str..event_str);
 end

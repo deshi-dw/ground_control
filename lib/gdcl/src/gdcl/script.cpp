@@ -7,192 +7,323 @@
 #include <vector>
 #include <utility>
 
+#include <lua5.3/lua.hpp>
+
 namespace gdcl {
 namespace script {
 
-static sol::state lua;
-
-std::function<void()>			 func_init;
-std::function<void()>			 func_kill;
-std::function<void()>			 func_loop;
-std::function<void(inpt::event)> func_input;
+static lua_State* state;
 
 // TODO redefine print function to redirect it.
 
+static const std::string script_error() {
+	const std::string err(lua_tostring(state, -1));
+	lua_pop(state, 1);
+	return err;
+}
+
+static const std::string script_to_string(int idx);
+
+static const std::string script_table_to_string(int idx) {
+	std::string str = "{ ";
+
+	// push table value to -2 and nil to -1.
+	lua_pushvalue(state, idx);
+	lua_pushnil(state);
+
+	// loop through all items in the table.
+	while(lua_next(state, -2)) {
+		// copy key value at index -2, to the top of the stack.
+		lua_pushvalue(state, -2);
+
+		// convert key value to string.
+		std::string key	  = lua_tostring(state, -1);
+		std::string value = script_to_string(-2);
+
+		if(str.size() > 3) {
+			str += ", ";
+		}
+		str += key + ": " + value;
+
+		// pop the copy of the key and value from the stack.
+		lua_pop(state, 2);
+	}
+
+	// pop table from the stack.
+	lua_pop(state, 1);
+
+	str += " }";
+	return str;
+}
+
+static const std::string script_to_string(int idx) {
+	switch(lua_type(state, idx)) {
+		case LUA_TNUMBER: {
+			const char* val = lua_tostring(state, idx);
+			if(val == nullptr) {
+				return "null";
+			}
+			return val;
+		}
+		case LUA_TSTRING: {
+			const char* val = lua_tostring(state, idx);
+			if(val == nullptr) {
+				return "null";
+			}
+			return val;
+		}
+		case LUA_TBOOLEAN:
+			return lua_toboolean(state, idx) == 1 ? "true" : "false";
+		case LUA_TFUNCTION:
+			return "function";
+		case LUA_TTABLE:
+			return script_table_to_string(idx);
+		default:
+			return "unknown";
+	}
+}
+
 int load(const std::string& config_path) {
-	// use math and coroutine libraries to make life easier.
-	lua.open_libraries(sol::lib::base, sol::lib::math, sol::lib::string,
-					   sol::lib::coroutine, sol::lib::debug);
+	// create a new lua state and open standard lua libraries.
+	state = luaL_newstate();
+	luaL_openlibs(state);
 
-	// TODO think about loading the config after the api so we can use api
-	// things in the config file.
+	// Load globals:
+	lua_pushinteger(state, static_cast<int>(inpt::event::type::button));
+	lua_setglobal(state, "EVENT_BUTTON");
+	lua_pushinteger(state, static_cast<int>(inpt::event::type::axis));
+	lua_setglobal(state, "EVENT_AXIS");
 
-	// load config file if it exists.
-	if(gdcl::file_exists(config_path)) {
-		try {
-			lua.safe_script_file(config_path);
-		}
-		catch(sol::error& e) {
-			// failed to load the config. maybe there is a syntax error or
-			// something.
-			std::cout << "err0\n";
-		}
+	lua_pushinteger(state, static_cast<int>(inpt::button_state::none));
+	lua_setglobal(state, "BUTTON_NONE");
+	lua_pushinteger(state, static_cast<int>(inpt::button_state::down));
+	lua_setglobal(state, "BUTTON_DOWN");
+	lua_pushinteger(state, static_cast<int>(inpt::button_state::up));
+	lua_setglobal(state, "BUTTON_UP");
+	lua_pushinteger(state, static_cast<int>(inpt::button_state::held));
+	lua_setglobal(state, "BUTTON_HELD");
+
+	// load config file if it exists or load a default config if it does not.
+	if(! gdcl::file_exists(config_path)) {
+		luaL_dostring(state, "gdcl={}; gdcl.config={main_file=\"main.lua\";}");
 	}
 	else {
-		// TODO default should probably be something better.
-		lua[sol::create_if_nil]["gdcl"]["main_file"] = "../main.lua";
-	}
-
-	sol::optional<std::string> main_file = lua["gdcl"]["main_file"];
-	if(! main_file.has_value() ||
-	   ! gdcl::file_exists(gdcl::exe_path() + '/' + main_file.value())) {
-		// no main file found.
-		// TODO error out or somethin.
-		std::cout << "err1\n";
-	}
-
-	/* LUA API
-
-		-- INPT:
-
-		(enum) inpt.button_state = { up, down }
-
-		(type) inpt.event_button = { uint id, inpt.button_state state }
-		(type) inpt.event_axis   = { uint id, float state }
-
-		(enum) inpt.event_type = { button, axis }
-
-		(type) inpt.event = {
-			inpt.event.type type,
-			inpt.event_button button,
-			inpt.event_axis axis
+		if(luaL_dofile(state, config_path.c_str()) != LUA_OK) {
+			throw error("failed to do config file: " + script_error());
 		}
-
-	*/
-
-	// create inpt namespace:
-	auto inpt = lua["inpt"].get_or_create<sol::table>();
-
-	// create inpt::button_state enum:
-	// inpt.new_enum("button_state", "up", inpt::button_state::up, "down",
-	// 			  inpt::button_state::down);
-	inpt[sol::create_if_nil]["button_state"]["up"]	 = inpt::button_state::up;
-	inpt[sol::create_if_nil]["button_state"]["down"] = inpt::button_state::down;
-
-	// create inpt::event_button type:
-	auto inpt_event_button =
-		inpt.new_usertype<inpt::event_button>("event_button");
-	inpt_event_button["id"] = &inpt::event_button::id;
-	inpt_event_button["state"] = &inpt::event_button::state;
-
-	// create inpt::event_axis type:
-	auto inpt_event_axis = inpt.new_usertype<inpt::event_axis>("event_axis");
-	inpt_event_axis["id"] = &inpt::event_axis::id;
-	inpt_event_axis["value"] = &inpt::event_axis::value;
-
-	inpt[sol::create_if_nil]["event_type"]["button"] =
-		inpt::event::type::button;
-	inpt[sol::create_if_nil]["event_type"]["axis"] = inpt::event::type::axis;
-
-	// create inpt::event type:
-	auto inpt_event		 = inpt.new_usertype<inpt::event>("event");
-	inpt_event["type"]	 = &inpt::event::type;
-	inpt_event["button"] = &inpt::event::button;
-	inpt_event["axis"]	 = &inpt::event::axis;
-
-	// load the main file. this should initialize things and assign functions
-	// for running.
-	try {
-		// TODO support absolute paths
-		lua.safe_script_file(gdcl::exe_path() + '/' + main_file.value());
-	}
-	catch(sol::error& e) {
-		// failed to load the main file. (probably a syntax error.)
-		std::cout << "err2\n";
-		return -1;
 	}
 
-	// get function like init, kill, and loop from main file if they are
-	// defined.
-	sol::optional<sol::function> optional_func_init	 = lua["init"];
-	sol::optional<sol::function> optional_func_kill	 = lua["kill"];
-	sol::optional<sol::function> optional_func_loop	 = lua["loop"];
-	sol::optional<sol::function> optional_func_input = lua["input"];
-
-	// TODO implement in-between layer to check if there is an error in the
-	// function during runtime.
-	if(optional_func_init.has_value()) {
-		func_init = optional_func_init.value();
+	// get the config from the lua state.
+	lua_getglobal(state, "gdcl");
+	if(! lua_istable(state, -1)) {
+		throw error("failed to get config value: "
+					"gdcl is not a table.");
 	}
 
-	if(optional_func_kill.has_value()) {
-		func_kill = optional_func_kill.value();
+	// get the config field.
+	lua_getfield(state, -1, "config");
+	if(! lua_istable(state, -1)) {
+		throw error("failed to get config value: "
+					"gdcl.config is not a table.");
 	}
 
-	if(optional_func_loop.has_value()) {
-		func_loop = optional_func_loop.value();
+	// get the main_file field of the config table.
+	lua_getfield(state, -1, "main_file");
+
+	const std::string& main_file = lua_tostring(state, -1);
+
+	// TODO determine if the main_file is a relative or absolute path.
+
+	// check if main_file exists.
+	std::string full_path = gdcl::exe_path() + "/" + main_file;
+	if(! gdcl::file_exists(full_path)) {
+		throw(error("failed to get config value: "
+					"main_file path doesn't exist. path = " +
+					full_path));
 	}
 
-	if(optional_func_input.has_value()) {
-		func_input = optional_func_input.value();
+	// try to execute main_file.
+	if(luaL_dofile(state, full_path.c_str()) != LUA_OK) {
+		throw error("lua error: " + script_error());
 	}
 
 	return 0;
 }
 
-static const std::string to_string(sol::object&);
-static const std::string table_to_string(const sol::table&);
+int close() {
+	lua_close(state);
 
-static const std::string to_string(const sol::table& table) {
-	std::string out;
-	for(auto pair : table) {
-		out +=
-			"'" + to_string(pair.first) + "': " + to_string(pair.second) + '\n';
-	}
-
-	return out;
+	return 0;
 }
 
-static const std::string to_string(sol::object& o) {
-	switch(o.get_type()) {
-		case sol::type::string:
-			return o.as<std::string>();
-
-		case sol::type::number:
-			return std::to_string(o.as<double>());
-
-		case sol::type::boolean:
-			return std::to_string(o.as<bool>());
-
-		case sol::type::table:
-			return to_string(o.as<const sol::table&>());
-
-		case sol::type::lua_nil:
-			return "nil";
-
-		default:
-			return std::string();
+int init() {
+	// get init function and check that it is a function.
+	lua_getglobal(state, "gdcl_init");
+	if(! lua_isfunction(state, -1)) {
+		return 0;
 	}
+
+	// call function.
+	if(lua_pcall(state, 0, 0, 0) != LUA_OK) {
+		throw error("lua error: " + script_error());
+	}
+
+	return 0;
+}
+
+int kill() {
+	// get init function and check that it is a function.
+	lua_getglobal(state, "gdcl_kill");
+	if(! lua_isfunction(state, -1)) {
+		return 0;
+	}
+
+	// call function.
+	if(lua_pcall(state, 0, 0, 0) != LUA_OK) {
+		throw error("lua error: " + script_error());
+	}
+
+	return 0;
+}
+
+int loop() {
+	// get init function and check that it is a function.
+	lua_getglobal(state, "gdcl_loop");
+	if(! lua_isfunction(state, -1)) {
+		return 0;
+	}
+
+	// call function.
+	if(lua_pcall(state, 0, 0, 0) != LUA_OK) {
+		throw error("lua error: " + script_error());
+	}
+
+	return 0;
+}
+
+int input(inpt::dev& dev, inpt::event e) {
+	// get input function and check that it is a function.
+	lua_getglobal(state, "gdcl_input");
+	if(! lua_isfunction(state, -1)) {
+		return 0;
+	}
+
+	// CREATE DEV TABLE AS ARGUMENT:
+	lua_newtable(state);
+
+	// set id:
+	lua_pushstring(state, "id");
+	lua_pushinteger(state, dev.id);
+	lua_settable(state, -3);
+
+	// set name:
+	lua_pushstring(state, "name");
+	lua_pushstring(state, dev.name.c_str());
+	lua_settable(state, -3);
+
+	// set vendor_id:
+	lua_pushstring(state, "vendor_id");
+	lua_pushinteger(state, dev.vendor_id);
+	lua_settable(state, -3);
+
+	// set product_id:
+	lua_pushstring(state, "product_id");
+	lua_pushinteger(state, dev.product_id);
+	lua_settable(state, -3);
+
+	// set axis array:
+	lua_pushstring(state, "axis");
+	lua_newtable(state);
+
+	for(int i = 0; i < dev.axis.size(); i++) {
+		lua_pushnumber(state, dev.axis[i]);
+		lua_rawseti(state, -2, i + 1);
+	}
+
+	lua_settable(state, -3);
+
+	// set button array:
+	lua_pushstring(state, "buttons");
+	lua_newtable(state);
+
+	for(int i = 0; i < dev.axis.size(); i++) {
+		lua_pushinteger(state, static_cast<int>(dev.buttons[i]));
+		lua_rawseti(state, -2, i + 1);
+	}
+
+	lua_settable(state, -3);
+
+	// CREATE EVENT TABLE AS ARGUMENT:
+	lua_newtable(state);
+
+	// set type:
+	lua_pushstring(state, "type");
+	lua_pushinteger(state, static_cast<int>(e.type));
+	lua_settable(state, -3);
+
+	// set id:
+	lua_pushstring(state, "id");
+	lua_pushinteger(state, e.id);
+	lua_settable(state, -3);
+	
+	if(e.type == inpt::event::type::button) {
+		// set state:
+		lua_pushstring(state, "state");
+		lua_pushinteger(state, static_cast<int>(e.state));
+		lua_settable(state, -3);
+	}
+	else if(e.type == inpt::event::type::axis) {
+		// set axis:
+		lua_pushstring(state, "value");
+		lua_pushnumber(state, e.value);
+		lua_settable(state, -3);
+	}
+
+	// std::cout << script_to_string(-1) << '\n';
+
+	// call function.
+	if(lua_pcall(state, 2, 0, 0) != LUA_OK) {
+		throw error("lua error: " + script_error());
+	}
+
+	return 0;
 }
 
 const std::string execute(const std::string& script) {
-	sol::object obj;
+	// attempt to run the script.
+	lua_pushnil(state);
+	if(luaL_dostring(state, ("return " + script).c_str()) != LUA_OK) {
+		// pop error off the stack just in case I guess.
+		std::string err1 = script_error();
 
-	try {
-		obj = lua.safe_script("return " + script);
-	}
-	catch(sol::error e) {
-		// TODO fix this because I hate it. also, the error still prints in the
-		// console it is running in which is bad.
-		try {
-			obj = lua.safe_script(script);
-		}
-		catch(sol::error e2) {
-			throw std::runtime_error(e2.what());
+		if(luaL_dostring(state, script.c_str()) != LUA_OK) {
+			script_error();
+			throw(error("lua error: " + err1));
 		}
 	}
+	else {
+		// running the script worked and it returned a value to print.
 
-	return to_string(obj);
+		// if there is only one return value, just return that value.
+		if(lua_type(state, -2) == LUA_TNIL) {
+			return script_to_string(-1);
+		}
+
+		std::string ret;
+
+		// if the script returned multiple values, get and return them all.
+		while(lua_type(state, -1) != LUA_TNIL) {
+			ret += script_to_string(-1) + ", ";
+			lua_pop(state, 1);
+		}
+
+		// pop nil value.
+		lua_pop(state, 1);
+
+		return ret;
+	}
+
+	return std::string();
 }
 
 } // namespace script

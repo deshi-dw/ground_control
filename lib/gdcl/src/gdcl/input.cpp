@@ -1,6 +1,7 @@
 #include "gdcl/input.h"
 
 #include "gamepad/Gamepad.h"
+#include "gdcl/timer.h"
 
 // gamepad/Gamepad.h defines bool as int and doesn't undefine it which fucks
 // with some code further down.
@@ -11,15 +12,14 @@ namespace inpt {
 
 std::unordered_map<unsigned int, dev> devices;
 
-std::function<void(dev&, int, button_state)> on_button;
-std::function<void(dev&, int, float)>		 on_axis;
-
 std::function<void(dev&, event)> on_input;
 
 static std::unordered_map<unsigned int, Gamepad_device*> raw_devices;
 
 const static int detect_dev_interval = 1000;
-static int		 detect_dev_timer	 = 0;
+static timer	 detect_dev_timer;
+
+static timer button_state_change_timer;
 
 static bool is_initialized = false;
 
@@ -32,7 +32,7 @@ static void on_dev_attach(struct Gamepad_device* device, void* context) {
 								 device->vendorID,
 								 device->productID,
 								 std::vector<float>(device->numAxes),
-								 std::vector<bool>(device->numButtons)};
+								 std::vector<button_state>(device->numButtons)};
 }
 
 static void on_dev_remove(struct Gamepad_device* device, void* context) {
@@ -47,21 +47,15 @@ static void on_btn_down(struct Gamepad_device* device, unsigned int buttonID,
 		return;
 	}
 
-	// call global button event.
-	if(on_button) {
-		on_button(devices[device->deviceID], buttonID, button_state::down);
-	}
+	button_state state = button_state::down;
+
+	// update device button state.
+	devices[device->deviceID].buttons[buttonID] = state;
 
 	// call global on input event.
 	if(on_input) {
 		on_input(devices[device->deviceID],
-				 (event){event::type::button,
-						 .button = {buttonID, button_state::down}});
-	}
-
-	// call local button event.
-	if(devices[device->deviceID].on_button != nullptr) {
-		devices[device->deviceID].on_button(buttonID, button_state::down);
+				 (event){event::type::button, buttonID, {.state = state}});
 	}
 }
 
@@ -72,21 +66,15 @@ static void on_btn_up(struct Gamepad_device* device, unsigned int buttonID,
 		return;
 	}
 
-	// call global button event.
-	if(on_button) {
-		on_button(devices[device->deviceID], buttonID, button_state::up);
-	}
+	button_state state = button_state::up;
+
+	// update device button state.
+	devices[device->deviceID].buttons[buttonID] = state;
 
 	// call global on input event.
 	if(on_input) {
 		on_input(devices[device->deviceID],
-				 (event){event::type::button,
-						 .button = {buttonID, button_state::up}});
-	}
-
-	// call local button event.
-	if(devices[device->deviceID].on_button != nullptr) {
-		devices[device->deviceID].on_button(buttonID, button_state::up);
+				 (event){event::type::button, buttonID, {.state = state}});
 	}
 }
 
@@ -98,20 +86,21 @@ static void on_axis_move(struct Gamepad_device* device, unsigned int axisID,
 		return;
 	}
 
-	// call global axis event.
-	if(on_axis) {
-		on_axis(devices[device->deviceID], axisID, value);
-	}
+	// TODO I commented this out because I'm not sure if it is really needed but
+	//      I think it is worth comparing weither or not this is benificial.
+
+	//	// don't update axis if the distance moved is too little.
+	// 	if(std::abs(value - devices[device->deviceID].axis[axisID]) < 0.01f) {
+	// 		return;
+	// 	}
+
+	// update device axis vaule.
+	devices[device->deviceID].axis[axisID] = value;
 
 	// call global on input event.
 	if(on_input) {
 		on_input(devices[device->deviceID],
-				 (event){event::type::axis, .axis = {axisID, value}});
-	}
-
-	// call local axis event.
-	if(devices[device->deviceID].on_axis != nullptr) {
-		devices[device->deviceID].on_axis(axisID, value);
+				 (event){event::type::axis, axisID, {.value = value}});
 	}
 }
 
@@ -137,28 +126,43 @@ int deinit() {
 int poll() {
 	// don't run detect devices every time poll is called because it seems kinda
 	// expensive.
-	if(detect_dev_timer <= 0) {
+	detect_dev_timer.call(detect_dev_interval, []() {
 		Gamepad_detectDevices();
-		detect_dev_timer = detect_dev_interval;
-	}
-	else {
-		detect_dev_timer--;
-	}
+	});
 
+	// update button state every 5 ms. Note that this is only for changes like
+	// BUTTON_DOWN -> BUTTON_HELD and BUTTON_UP -> BUTTON_NONE.
+	button_state_change_timer.call(5, [&]() {
+		for(auto dev_pair : devices) {
+			dev& dev = devices[dev_pair.first];
+
+			// update the state of the buttons to include states none and held.
+			for(int i = 0; i < dev.buttons.size(); i++) {
+				switch(dev.buttons[i]) {
+					case button_state::up:
+						dev.buttons[i] = button_state::none;
+						break;
+					case button_state::down:
+						dev.buttons[i] = button_state::held;
+						break;
+					case button_state::held:
+						// repeatedly call on_input while a button is held.
+						if(on_input) {
+							event e = {event::type::button, (unsigned) i,
+									   dev.buttons[i]};
+							on_input(dev, e);
+						}
+						break;
+
+					default:
+						break;
+				}
+			}
+		}
+	});
+
+	// process input device events.
 	Gamepad_processEvents();
-
-	// update device button and axis values.
-	for(auto dev : devices) {
-		Gamepad_device* raw_dev = raw_devices[dev.second.id];
-
-		for(int i = 0; i < raw_dev->numAxes; i++) {
-			devices[raw_dev->deviceID].axises[i] = raw_dev->axisStates[i];
-		}
-
-		for(int i = 0; i < raw_dev->numButtons; i++) {
-			devices[raw_dev->deviceID].buttons[i] = raw_dev->buttonStates[i];
-		}
-	}
 
 	return 0;
 }
